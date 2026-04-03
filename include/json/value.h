@@ -1022,6 +1022,9 @@ public:
   pointer operator->() const { return const_cast<pointer>(&deref()); }
 };
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wignored-attributes"
+
 inline void swap(Value& a, Value& b) { a.swap(b); }
 
 inline const Value& Value::front() const { return *begin(); }
@@ -1031,6 +1034,8 @@ inline Value& Value::front() { return *begin(); }
 inline const Value& Value::back() const { return *(--end()); }
 
 inline Value& Value::back() { return *(--end()); }
+
+#pragma clang diagnostic pop
 
 } // namespace Json
 
